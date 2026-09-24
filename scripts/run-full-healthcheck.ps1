@@ -101,13 +101,17 @@ $activeRefreshRate = 0
 $hasDiscreteGPU = $false
 
 foreach ($g in $gpus) {
-    if ($g.Name -like "*NVIDIA*" -or $g.Name -like "*Radeon RX*" -or $g.Name -like "*Arc*") {
+    $isDGPU = ($g.Name -like "*NVIDIA*" -or $g.Name -like "*Radeon RX*" -or $g.Name -like "*Arc*")
+    if ($isDGPU) {
         $hasDiscreteGPU = $true
     }
     if ($g.CurrentHorizontalResolution -gt 0) {
-        $activeDisplayGPU = $g.Name
-        $activeResolution = "$($g.CurrentHorizontalResolution)x$($g.CurrentVerticalResolution)"
-        $activeRefreshRate = $g.CurrentRefreshRate
+        # 如果是独显或者当前尚未记录到独显，则更新活跃显示器
+        if ($isDGPU -or $activeDisplayGPU -notmatch "NVIDIA|Radeon RX|Arc") {
+            $activeDisplayGPU = $g.Name
+            $activeResolution = "$($g.CurrentHorizontalResolution)x$($g.CurrentVerticalResolution)"
+            $activeRefreshRate = $g.CurrentRefreshRate
+        }
     }
 }
 
