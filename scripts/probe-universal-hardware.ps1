@@ -102,10 +102,14 @@ foreach ($g in $gpus) {
     if ($g.Name -like "*Radeon*" -or $g.Name -like "*AMD*") { $hasAMD = $true }
     if ($g.Name -like "*Intel*Arc*") { $hasIntelArc = $true }
 
+    $isDGPU = ($g.Name -like "*NVIDIA*" -or $g.Name -like "*Radeon RX*" -or $g.Name -like "*Arc*")
+
     if ($hasDisplay) {
-        $activeDisplayGPU = $g.Name
-        $activeResolution = "$($g.CurrentHorizontalResolution)x$($g.CurrentVerticalResolution)"
-        $activeRefreshRate = $g.CurrentRefreshRate
+        if ($isDGPU -or $activeDisplayGPU -notmatch "NVIDIA|Radeon RX|Arc") {
+            $activeDisplayGPU = $g.Name
+            $activeResolution = "$($g.CurrentHorizontalResolution)x$($g.CurrentVerticalResolution)"
+            $activeRefreshRate = $g.CurrentRefreshRate
+        }
     }
 
     $gpuDetails += [ordered]@{
@@ -113,7 +117,7 @@ foreach ($g in $gpus) {
         DriverVersion   = $g.DriverVersion
         Status          = $g.Status
         IsDrivingScreen = $hasDisplay
-        Resolution      = if ($hasDisplay) { $activeResolution } else { "Inactive / Passthrough" }
+        Resolution      = if ($hasDisplay) { "$($g.CurrentHorizontalResolution)x$($g.CurrentVerticalResolution)" } else { "Inactive / Passthrough" }
         RefreshRateHz   = if ($hasDisplay) { $g.CurrentRefreshRate } else { 0 }
     }
 }
