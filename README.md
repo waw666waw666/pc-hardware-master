@@ -137,12 +137,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "scripts/generate-safe-optim
 
 ## 🛡️ 开发者安全边界与工程规范 (Safety Guarantees)
 
-### 1. 开发者四不碰原则
+### 1. 开发者与用户环境五不碰原则
 
 - **禁止修改环境变量**：不增删改 `PATH`、`JAVA_HOME`、`PYTHONPATH` 等系统或用户环境变量；
 - **禁止扫描/清理开发缓存**：绕开 `~/.npm`、`~/.cache`、`~/.cargo`、`venv`、`node_modules` 等开发目录；
 - **禁止干扰虚拟网卡**：网络优化逻辑过滤 `vEthernet`、`WSL`、`Docker`、`Tailscale` 等虚拟网卡，仅针对物理硬件网卡；
-- **禁止关闭核心系统服务**：不触碰 Windows Update、Defender 核心防御、RPC、DWM 等关键基础服务。
+- **禁止关闭核心系统服务**：不触碰 Windows Update、Defender 核心防御、RPC、DWM 等关键基础服务；
+- **禁止擅自关闭用户运行中软件**：严禁调用 `Stop-Process` 或 `taskkill` 杀除前后台软件。排查到疑似卡顿进程时，必须详细向用户介绍软件用途、解释性能冲突根因，并等待用户明确批准后方可处置。
 
 ### 2. 工程实现规范
 

@@ -118,7 +118,14 @@ description: >
    - **🟡 黄色项 (需用户协同确认)**：笔记本独显直连切换、厂商狂暴散热快捷键、HDMI 完全范围切换、BIOS 开 XMP/rBAR/SecureBoot。
 2. **开发者机器保护红线**：
    严格遵循 [references/developer-safety-boundary.md](references/developer-safety-boundary.md)，**绝对不碰**环境变量（`PATH`）、包管理器缓存（`npm/uv/pip`）、虚拟网卡（Docker/WSL/VMware）、代理工具（Mihomo/Tailscale）与本地常用开发端口。
-3. **自动就绪桌面回滚机制**：
+3. **运行中软件绝对保全原则（禁止擅自杀进程，关闭前必须先介绍并问询）**：
+   **绝对严禁**擅自调用 `Stop-Process`、`taskkill` 或直接杀除用户正在运行的任何前后台软件与进程（如桌面美化 `TranslucentTB`、动态壁纸 `Wallpaper Engine`、游戏加加、微星小飞机、录屏工具等）。
+   若排查发现某款软件存在严重拖慢系统（如亚克力效果导致 DWM 掉帧、后台静默录屏占用 GPU）的重大嫌疑：
+   - **必须先向用户说明该软件是什么**（名称、日常用途与功能定位）；
+   - **说明怀疑其导致性能瓶颈的客观依据**（如 DWM 钩子延迟、帧时间不稳）；
+   - **说明临时退出的预期测试收益与排障后如何复原**；
+   - **征得用户明确回复同意后，方可指导用户退出或在授权下代为停止**，严禁擅自强杀！
+4. **自动就绪桌面回滚机制**：
    执行调优的同时，调用 `$env:USERPROFILE\.agents\skills\pc-hardware-master\scripts\generate-rollback-helper.ps1`，直接在用户桌面生成 **`一键恢复系统与网络默认值.bat`**。告诉用户万一有任何不适，双击即可 100% 毫秒级还原出厂设置。
 
 ---
