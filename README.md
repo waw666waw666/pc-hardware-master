@@ -1,4 +1,4 @@
-# PC Hardware Master (电脑硬件与系统工程大师)
+# 🖥️ PC Hardware Master (电脑硬件与系统工程大师)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%20Windows%2011-blue.svg)](https://microsoft.com/windows)
@@ -40,7 +40,7 @@
 
 ---
 
-## 快速上手 (Quick Start)
+## 🚀 快速上手 (Quick Start)
 
 ### 方式 1：终端独立使用 (无需 AI，原生 PowerShell)
 
@@ -82,7 +82,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "scripts/generate-safe-optim
 
 ---
 
-## 脚本工具清单 (Scripts Arsenal)
+## 🛠️ 脚本工具清单 (Scripts Arsenal)
 
 项目在 `scripts/` 目录内置 6 个自动化工程脚本：
 
@@ -110,7 +110,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "scripts/generate-safe-optim
 - 显示链路：Intel(R) UHD Graphics · 1920x1080 @ 165Hz 【Optimus混合输出】
 - 内存与空间：物理内存已用 7.7G / 总计 15.7G · C 盘可用 59.7G
 
-[已达标项] (10 项)
+🟢 达标与已调优项 (10 项)
 - [x] 电源调度：已激活「卓越性能」低延迟电源方案
 - [x] 屏幕刷新率：当前运行在高刷新率模式 (165Hz)
 - [x] 内存环境：未发现暴力清内存软件，运行纯净
@@ -121,12 +121,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "scripts/generate-safe-optim
 - [x] 鼠标指针输入：系统级非线性鼠标加速度已关闭 (1:1 纯净线性跟手)
 - [x] 着色器缓存：体积健康 (0.13MB)
 
-[建议优化项] (3 项)
+🟡 推荐优化提升项 (3 项)
 - [ ] 在显卡控制中心中开启「仅限独显 / 独显直连」
 - [ ] 关闭 NetworkThrottlingIndex 并将 SystemResponsiveness 调优为 0
 - [ ] 进入主板 BIOS 开启 Secure Boot (安全启动)
 
-[开发者环境安全护航状态]
+🛡️ 开发者环境安全护航状态
 - 环境变量 (PATH)：已锁死，绝不修改系统 PATH
 - 开发者缓存 (npm/pip/uv)：已隔离保护，绝不误删
 - 虚拟网络 (Docker/WSL/VPN)：完全绕行，仅作用于物理以太网卡与 Wi-Fi 芯片
@@ -135,7 +135,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "scripts/generate-safe-optim
 
 ---
 
-## 开发者安全边界与工程规范 (Safety Guarantees)
+## 🛡️ 开发者安全边界与工程规范 (Safety Guarantees)
 
 ### 1. 开发者四不碰原则
 
